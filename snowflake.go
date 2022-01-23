@@ -14,9 +14,9 @@ func NewSnowflake(timestamp time.Time) Snowflake {
 	return Snowflake(strconv.FormatInt(((timestamp.UnixNano()/1_000_000)-Epoch)<<22, 10))
 }
 
-// NewSnowflakeEnv returns a new Snowflake from an environment variable
+// GetSnowflakeEnv returns a new Snowflake from an environment variable
 //goland:noinspection GoUnusedExportedFunction
-func NewSnowflakeEnv(key string) Snowflake {
+func GetSnowflakeEnv(key string) Snowflake {
 	return Snowflake(os.Getenv(key))
 }
 

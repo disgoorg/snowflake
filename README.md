@@ -38,7 +38,7 @@ id.Int64()
 id = NewSnowflake(time.Now())
 
 // returns a snowflake from an environment variable
-id = NewSnowflakeEnv("guild_id")
+id = GetSnowflakeEnv("guild_id")
 ```
 
 ## License
