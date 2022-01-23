@@ -43,5 +43,4 @@ id = GetSnowflakeEnv("guild_id")
 
 ## License
 
-Distributed under the [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/
-Org/snowflake/blob/master/LICENSE). See LICENSE for more information.
+Distributed under the [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/DisgoOrg/snowflake/blob/master/LICENSE). See LICENSE for more information.
