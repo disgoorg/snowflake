@@ -38,7 +38,10 @@ id.Int64()
 id = NewSnowflake(time.Now())
 
 // returns the int64 as a Snowflake
-id = ParseSnowflake(123456789012345678)
+id = ParseInt64(123456789012345678)
+
+// returns the uint64 as a Snowflake
+id = ParseUInt64(123456789012345678)
 
 // returns a snowflake from an environment variable
 id = GetSnowflakeEnv("guild_id")

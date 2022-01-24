@@ -14,13 +14,16 @@ func NewSnowflake(timestamp time.Time) Snowflake {
 	return Snowflake(strconv.FormatInt(((timestamp.UnixNano()/1_000_000)-Epoch)<<22, 10))
 }
 
-// ParseSnowflake parses a Snowflake int64 into a Snowflake
+// ParseInt64 parses an int64 into a Snowflake
 //goland:noinspection GoUnusedExportedFunction
-func ParseSnowflake(i int64) Snowflake {
-	if i == 0 {
-		return ""
-	}
+func ParseInt64(i int64) Snowflake {
 	return Snowflake(strconv.FormatInt(i, 10))
+}
+
+// ParseUInt64 parses an uint64 into a Snowflake
+//goland:noinspection GoUnusedExportedFunction
+func ParseUInt64(i uint64) Snowflake {
+	return Snowflake(strconv.FormatUint(i, 10))
 }
 
 // GetSnowflakeEnv returns a new Snowflake from an environment variable
