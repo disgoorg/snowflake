@@ -37,6 +37,9 @@ id.Int64()
 // this can be used for various pagination requests to the discord api
 id = NewSnowflake(time.Now())
 
+// returns the int64 as a Snowflake
+id = ParseSnowflake(123456789012345678)
+
 // returns a snowflake from an environment variable
 id = GetSnowflakeEnv("guild_id")
 ```
