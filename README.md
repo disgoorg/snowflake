@@ -37,6 +37,9 @@ id.Int64()
 // this can be used for various pagination requests to the discord api
 id = NewSnowflake(time.Now())
 
+// returns the fmt.Stringer as a Snowflake
+id = ParseString(...)
+
 // returns the int64 as a Snowflake
 id = ParseInt64(123456789012345678)
 

@@ -1,6 +1,7 @@
 package snowflake
 
 import (
+	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -12,6 +13,12 @@ var Epoch int64 = 1420070400000
 //goland:noinspection GoUnusedExportedFunction
 func NewSnowflake(timestamp time.Time) Snowflake {
 	return Snowflake(strconv.FormatInt(((timestamp.UnixNano()/1_000_000)-Epoch)<<22, 10))
+}
+
+// ParseString parses a fmt.Stringer into a Snowflake
+//goland:noinspection GoUnusedExportedFunction
+func ParseString(str fmt.Stringer) Snowflake {
+	return Snowflake(str.String())
 }
 
 // ParseInt64 parses an int64 into a Snowflake
