@@ -1,3 +1,3 @@
-module github.com/DisgoOrg/snowflake
+module github.com/disgoorg/snowflake
 
 go 1.18
