@@ -7,47 +7,53 @@
 # snowflake
 
 snowflake is a golang library for parsing [snowflake IDs](https://docs.snowflake.com) from discord.
-This package provides a custom `snowflake` type which has various utility methods for parsing snowflake IDs.
+This package provides a custom snowflake ID type which has various utility methods for parsing snowflake IDs.
 
 ### Installing
 
 ```sh
-go get github.com/disgoorg/snowflake
+go get github.com/disgoorg/snowflake/v2
 ```
 
 ## Usage
 
 ```go
 
-id := Snowflake("123456789012345678")
+id := ID(123456789012345678)
 
 // deconstructs the snowflake ID into its components timestamp, worker ID, process ID, and increment
 id.Deconstruct()
 
-// time.Time when the snowflake was generated
+// the time.Time when the snowflake ID was generated
 id.Time()
+
+// the worker ID which the snowflake ID was generated
+id.WorkerID()
+
+// the process ID which the snowflake ID was generated
+id.ProcessID()
+
+// tje sequence when the snowflake ID was generated
+id.Sequence()
 
 // returns the string representation of the snowflake ID
 id.String()
 
-// returns the int64 representation of the snowflake ID
-id.Int64()
-
-// returns a new snowflake with worker ID, process ID, and increment set to 0
+// returns a new snowflake ID with worker ID, process ID, and sequence set to 0
 // this can be used for various pagination requests to the discord api
-id = NewSnowflake(time.Now())
+id := New(time.Now())
 
-// returns the fmt.Stringer as a Snowflake
-id = ParseString(...)
+// returns a snowflake ID from an environment variable
+id := GetEnv("guild_id")
 
-// returns the int64 as a Snowflake
-id = ParseInt64(123456789012345678)
+// returns a snowflake ID from an environment variable and a bool indicating if the key was found
+id, found := LookupEnv("guild_id")
 
-// returns the uint64 as a Snowflake
-id = ParseUInt64(123456789012345678)
+// returns the string as a snowflake ID or an error
+id, err := Parse("123456789012345678")
 
-// returns a snowflake from an environment variable
-id = GetSnowflakeEnv("guild_id")
+// returns the string as a snowflake ID or panics if an error occurs
+id := MustParse("123456789012345678")
 ```
 
 ## License
