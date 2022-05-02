@@ -7,7 +7,7 @@
 # snowflake
 
 snowflake is a golang library for parsing [snowflake IDs](https://docs.snowflake.com) from discord.
-This package provides a custom snowflake ID type which has various utility methods for parsing snowflake IDs.
+This package provides a custom `snowflake.ID` type which has various utility methods for parsing discord snowflakes.
 
 ### Installing
 
@@ -19,7 +19,7 @@ go get github.com/disgoorg/snowflake/v2
 
 ```go
 
-id := ID(123456789012345678)
+id := snowflake.ID(123456789012345678)
 
 // deconstructs the snowflake ID into its components timestamp, worker ID, process ID, and increment
 id.Deconstruct()
