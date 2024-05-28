@@ -42,19 +42,19 @@ id.String()
 
 // returns a new snowflake ID with worker ID, process ID, and sequence set to 0
 // this can be used for various pagination requests to the discord api
-id := New(time.Now())
+id := snowflake.New(time.Now())
 
 // returns a snowflake ID from an environment variable
-id := GetEnv("guild_id")
+id := snowflake.GetEnv("guild_id")
 
 // returns a snowflake ID from an environment variable and a bool indicating if the key was found
-id, found := LookupEnv("guild_id")
+id, found := snowflake.LookupEnv("guild_id")
 
 // returns the string as a snowflake ID or an error
-id, err := Parse("123456789012345678")
+id, err := snowflake.Parse("123456789012345678")
 
 // returns the string as a snowflake ID or panics if an error occurs
-id := MustParse("123456789012345678")
+id := snowflake.MustParse("123456789012345678")
 ```
 
 ## License
