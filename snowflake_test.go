@@ -51,15 +51,23 @@ func TestID_UnmarshalJSON(t *testing.T) {
 			err:           nil,
 		},
 		{
-			name:          "unquoted 1",
+			name:          "unquoted 1 no allowUnquoted",
 			data:          []byte("1"),
 			expected:      0,
-			allowUnquoted: true,
+			allowUnquoted: false,
 			err:           strconv.ErrSyntax,
+		},
+		{
+			name:          "unquoted 1 allowUnquoted",
+			data:          []byte("1"),
+			expected:      1,
+			allowUnquoted: true,
+			err:           nil,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			AllowUnquoted = tt.allowUnquoted
 			var id ID
 			err := json.Unmarshal(tt.data, &id)
 

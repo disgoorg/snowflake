@@ -78,9 +78,13 @@ func (id *ID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	snowflake, err := strconv.Unquote(string(data))
-	if err != nil && !AllowUnquoted {
-		return fmt.Errorf("failed to unquote snowflake: %w", err)
+	s := string(data)
+	snowflake, err := strconv.Unquote(s)
+	if err != nil {
+		if !AllowUnquoted {
+			return fmt.Errorf("failed to unquote snowflake: %w", err)
+		}
+		snowflake = s
 	}
 
 	i, err := strconv.ParseUint(snowflake, 10, 64)
