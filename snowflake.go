@@ -43,7 +43,14 @@ func MustParse(str string) ID {
 
 // GetEnv returns the value of the environment variable named by the key and parses it as a snowflake.
 // returns ID(0) if the environment variable is not set.
+// Deprecated: use Getenv instead.
 func GetEnv(key string) ID {
+	return Getenv(key)
+}
+
+// Getenv returns the value of the environment variable named by the key and parses it as a snowflake.
+// returns ID(0) if the environment variable is not set.
+func Getenv(key string) ID {
 	snowflake, _ := LookupEnv(key)
 	return snowflake
 }
